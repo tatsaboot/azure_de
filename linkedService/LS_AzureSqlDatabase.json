@@ -1,0 +1,23 @@
+{
+	"name": "LS_AzureSqlDatabase",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "amnserverdb.database.windows.net",
+			"database": "sql-db-amn",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "amnuay099",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVaut",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sqlserver-password"
+			}
+		}
+	}
+}
