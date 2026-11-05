@@ -1,0 +1,10 @@
+{
+	"name": "AzureKeyVaut",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://kwamnuay.vault.azure.net/"
+		}
+	}
+}
