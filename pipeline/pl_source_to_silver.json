@@ -143,15 +143,15 @@
 				"typeProperties": {
 					"notebookPath": "/Users/amnuay099@gmail.com/azure-adb/Landing_to_Bronze",
 					"baseParameters": {
-						"source system": {
+						"source_system": {
 							"value": "@activity('read_table_detail').output.firstRow.source_system",
 							"type": "Expression"
 						},
-						"table name": {
+						"table_name": {
 							"value": "@activity('read_table_detail').output.firstRow.bronze_table_name",
 							"type": "Expression"
 						},
-						"landing timestamp": {
+						"landing_timestamp": {
 							"value": "@variables('start_time')",
 							"type": "Expression"
 						}
@@ -184,11 +184,11 @@
 				"typeProperties": {
 					"notebookPath": "/Users/amnuay099@gmail.com/azure-adb/Bronze_to_Silver",
 					"baseParameters": {
-						"table name": {
+						"table_name": {
 							"value": "@activity('read_table_detail').output.firstRow.silver_table_name",
 							"type": "Expression"
 						},
-						"landing timestamp": {
+						"landing_timestamp": {
 							"value": "@variables('start_time')",
 							"type": "Expression"
 						}
