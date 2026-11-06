@@ -29,6 +29,9 @@
 		"PostgreSql_properties_typeProperties_username": {
 			"value": "neondb_owner"
 		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"value": "1106-080945-mx5sfo9l"
+		},
 		"containerUri": {
 			"value": ""
 		},

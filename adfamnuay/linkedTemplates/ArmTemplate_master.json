@@ -39,6 +39,10 @@
 			"type": "string",
 			"defaultValue": "neondb_owner"
 		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "1106-080945-mx5sfo9l"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -89,6 +93,9 @@
 					},
 					"PostgreSql_properties_typeProperties_username": {
 						"value": "[parameters('PostgreSql_properties_typeProperties_username')]"
+					},
+					"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('AzureDatabricks1_properties_typeProperties_existingClusterId')]"
 					}
 				}
 			},
