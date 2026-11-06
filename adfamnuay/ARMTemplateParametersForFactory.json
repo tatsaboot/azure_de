@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfamnuay"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://stramnuay.dfs.core.windows.net/"
+		},
+		"AzureKeyVaut_properties_typeProperties_baseUrl": {
+			"value": "https://kwamnuay.vault.azure.net/"
+		},
+		"LS_AzureSqlDatabase_properties_typeProperties_server": {
+			"value": "amnserverdb.database.windows.net"
+		},
+		"LS_AzureSqlDatabase_properties_typeProperties_database": {
+			"value": "sql-db-amn"
+		},
+		"LS_AzureSqlDatabase_properties_typeProperties_userName": {
+			"value": "amnuay099"
+		},
+		"PostgreSql_properties_typeProperties_server": {
+			"value": "ep-wild-wildflower-a1k7d8m5-pooler.ap-southeast-1.aws.neon.tech"
+		},
+		"PostgreSql_properties_typeProperties_database": {
+			"value": "neondb"
+		},
+		"PostgreSql_properties_typeProperties_username": {
+			"value": "neondb_owner"
+		}
+	}
+}
