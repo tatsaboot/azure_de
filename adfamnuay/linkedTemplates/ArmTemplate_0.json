@@ -468,7 +468,7 @@
 						],
 						"policy": {
 							"timeout": "0.12:00:00",
-							"retry": 0,
+							"retry": 2,
 							"retryIntervalInSeconds": 30,
 							"secureOutput": false,
 							"secureInput": false
@@ -536,7 +536,7 @@
 						],
 						"policy": {
 							"timeout": "0.12:00:00",
-							"retry": 0,
+							"retry": 2,
 							"retryIntervalInSeconds": 30,
 							"secureOutput": false,
 							"secureInput": false
@@ -545,15 +545,15 @@
 						"typeProperties": {
 							"notebookPath": "/azure-adb/Landing_to_Bronze",
 							"baseParameters": {
-								"Source System": {
+								"source system": {
 									"value": "@activity('read_table_detail').output.firstRow.source_system",
 									"type": "Expression"
 								},
-								"Table Name": {
+								"table name": {
 									"value": "@activity('read_table_detail').output.firstRow.bronze_table_name",
 									"type": "Expression"
 								},
-								"Landing Timestamp": {
+								"landing timestamp": {
 									"value": "@variables('start_time')",
 									"type": "Expression"
 								}
@@ -577,7 +577,7 @@
 						],
 						"policy": {
 							"timeout": "0.12:00:00",
-							"retry": 0,
+							"retry": 2,
 							"retryIntervalInSeconds": 30,
 							"secureOutput": false,
 							"secureInput": false
@@ -586,11 +586,11 @@
 						"typeProperties": {
 							"notebookPath": "/azure-adb/Bronze_to_Silver",
 							"baseParameters": {
-								"Table Name": {
+								"table name": {
 									"value": "@activity('read_table_detail').output.firstRow.silver_table_name",
 									"type": "Expression"
 								},
-								"Landing Timestamp": {
+								"landing timestamp": {
 									"value": "@variables('start_time')",
 									"type": "Expression"
 								}
