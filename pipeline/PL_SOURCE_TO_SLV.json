@@ -54,7 +54,7 @@
 							"type": "ExecutePipeline",
 							"dependsOn": [
 								{
-									"activity": "Script1",
+									"activity": "Insert Inprogress Status",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -79,7 +79,7 @@
 							}
 						},
 						{
-							"name": "Script1",
+							"name": "Insert Inprogress Status",
 							"type": "Script",
 							"dependsOn": [],
 							"policy": {
@@ -97,7 +97,47 @@
 							"typeProperties": {
 								"scripts": [
 									{
-										"type": "Query"
+										"type": "Query",
+										"text": {
+											"value": "INSERT INTO ctrl.audit_log(adf_run_id ,\n                            table_id,\n                            stage ,\n                            [status],                            \n                            start_time )\nVALUES('a1',\n        @{item().table_id},\n        'SOURCE_TO_SILVER',\n        'IN_PROGRESS',\n        SYSUTCDATETIME()\n        )",
+											"type": "Expression"
+										}
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Update Failed Status",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "ingest from Source to Silver",
+									"dependencyConditions": [
+										"Failed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 2,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "LS_AzureSqlDatabase",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "INSERT INTO ctrl.audit_log(adf_run_id ,\n                            table_id,\n                            stage ,\n                            [status],                            \n                            start_time )\nVALUES('a1',\n        @{item().table_id},\n        'SOURCE_TO_SILVER',\n        'IN_PROGRESS',\n        SYSUTCDATETIME()\n        )",
+											"type": "Expression"
+										}
 									}
 								],
 								"scriptBlockExecutionTimeout": "02:00:00"
