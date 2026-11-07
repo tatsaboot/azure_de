@@ -8,6 +8,9 @@
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://stramnuay.dfs.core.windows.net/"
 		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"value": "1106-080945-mx5sfo9l"
+		},
 		"AzureKeyVaut_properties_typeProperties_baseUrl": {
 			"value": "https://kwamnuay.vault.azure.net/"
 		},
@@ -28,9 +31,6 @@
 		},
 		"PostgreSql_properties_typeProperties_username": {
 			"value": "neondb_owner"
-		},
-		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
-			"value": "1106-080945-mx5sfo9l"
 		}
 	}
 }

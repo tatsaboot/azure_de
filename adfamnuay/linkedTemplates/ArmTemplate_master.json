@@ -11,6 +11,10 @@
 			"type": "string",
 			"defaultValue": "https://stramnuay.dfs.core.windows.net/"
 		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "1106-080945-mx5sfo9l"
+		},
 		"AzureKeyVaut_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://kwamnuay.vault.azure.net/"
@@ -38,10 +42,6 @@
 		"PostgreSql_properties_typeProperties_username": {
 			"type": "string",
 			"defaultValue": "neondb_owner"
-		},
-		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
-			"type": "string",
-			"defaultValue": "1106-080945-mx5sfo9l"
 		},
 		"containerUri": {
 			"type": "string",
@@ -76,6 +76,9 @@
 					"AzureKeyVaut_properties_typeProperties_baseUrl": {
 						"value": "[parameters('AzureKeyVaut_properties_typeProperties_baseUrl')]"
 					},
+					"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('AzureDatabricks1_properties_typeProperties_existingClusterId')]"
+					},
 					"LS_AzureSqlDatabase_properties_typeProperties_server": {
 						"value": "[parameters('LS_AzureSqlDatabase_properties_typeProperties_server')]"
 					},
@@ -93,9 +96,6 @@
 					},
 					"PostgreSql_properties_typeProperties_username": {
 						"value": "[parameters('PostgreSql_properties_typeProperties_username')]"
-					},
-					"AzureDatabricks1_properties_typeProperties_existingClusterId": {
-						"value": "[parameters('AzureDatabricks1_properties_typeProperties_existingClusterId')]"
 					}
 				}
 			},
