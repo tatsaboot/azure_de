@@ -29,12 +29,48 @@
 						"type": "DatasetReference"
 					}
 				}
+			},
+			{
+				"name": "Prepare Email Body Header",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "body_header",
+					"value": "Ingeastion and Transform process for azure data pipeline process"
+				}
+			},
+			{
+				"name": "Prepare Email Body Footer",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "body_footer",
+					"value": "For any support, Please reach out to support@gmail.com"
+				}
 			}
 		],
 		"parameters": {
 			"adf_run_id": {
 				"type": "string",
 				"defaultValue": "4546bf3f-c7ec-489d-980b-2ce29ceb947f"
+			}
+		},
+		"variables": {
+			"body_header": {
+				"type": "String"
+			},
+			"body_footer": {
+				"type": "String"
 			}
 		},
 		"annotations": []
