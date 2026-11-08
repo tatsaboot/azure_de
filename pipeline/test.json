@@ -1,9 +1,10 @@
 {
-	"name": "pipeline1",
+	"name": "test",
 	"properties": {
 		"activities": [
 			{
 				"name": "Copy data1",
+				"description": "This is a change in description",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
