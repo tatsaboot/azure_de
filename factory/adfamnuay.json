@@ -9,6 +9,10 @@
 			"env": {
 				"type": "string",
 				"value": "DEV"
+			},
+			"logic_app_url": {
+				"type": "string",
+				"value": "https://prod-22.northcentralus.logic.azure.com:443/workflows/198509f79567493c90db95686be6eae8/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=SyZtXVA3jFAboOLYGJ-8hj1bV7xi7YSx5aa6p3OzCYo"
 			}
 		}
 	},
