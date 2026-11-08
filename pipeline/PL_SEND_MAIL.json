@@ -75,7 +75,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "body_subject",
+					"variableName": "email_subject",
 					"value": {
 						"value": "@{pipeline().globalParameters.env} | @{if(greater(activity('Checked overall failed count').output.firstRow.count,0),'FAILED','SUCCESS')} | AZURE PIPELINE MASTER RUN",
 						"type": "Expression"
@@ -146,7 +146,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "logic_apps_body",
-					"value": ""
+					"value": {
+						"value": "{\n        \"subject\": \"@{variables('email_subject')}\",\n        \"email_receipients\":\"@{pipeline().globalParameters.email_receipt}\",\n        \"body_header\": \"@{variables('body_header')}\",\n        \"body_footer\": \"@{variables('body_footer')}\",\n        \"status_table\":activity('Read all tables status').output.value\n}",
+						"type": "Expression"
+					}
 				}
 			}
 		],
@@ -167,6 +170,9 @@
 				"type": "String"
 			},
 			"logic_apps_body": {
+				"type": "String"
+			},
+			"email_subject": {
 				"type": "String"
 			}
 		},
