@@ -57,6 +57,23 @@
 					"variableName": "body_footer",
 					"value": "For any support, Please reach out to support@gmail.com"
 				}
+			},
+			{
+				"name": "Prepare Email Subject",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "body_subject",
+					"value": {
+						"value": "@{pipeline().globalParameters.env} | SUCCESS | AZURE PIPELINE MASTER RUN",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {
@@ -70,6 +87,9 @@
 				"type": "String"
 			},
 			"body_footer": {
+				"type": "String"
+			},
+			"body_subject": {
 				"type": "String"
 			}
 		},
