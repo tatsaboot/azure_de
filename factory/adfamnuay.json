@@ -5,6 +5,10 @@
 			"email_receipt": {
 				"type": "string",
 				"value": "amnuay099@gmail.com"
+			},
+			"env": {
+				"type": "string",
+				"value": "DEV"
 			}
 		}
 	},
