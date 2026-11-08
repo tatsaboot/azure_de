@@ -61,7 +61,14 @@
 			{
 				"name": "Prepare Email Subject",
 				"type": "SetVariable",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Checked overall failed count",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"secureOutput": false,
 					"secureInput": false
@@ -70,9 +77,76 @@
 				"typeProperties": {
 					"variableName": "body_subject",
 					"value": {
-						"value": "@{pipeline().globalParameters.env} | SUCCESS | AZURE PIPELINE MASTER RUN",
+						"value": "@{pipeline().globalParameters.env} | @{if(greater(activity('Checked overall failed count').output.firstRow.count,0),'FAILED','SUCCESS')} | AZURE PIPELINE MASTER RUN",
 						"type": "Expression"
 					}
+				}
+			},
+			{
+				"name": "Checked overall failed count",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "SELECT  COUNT(*) as Count\nFROM [ctrl].[audit_log]\nwhere adf_run_id = '@{pipeline().parameters.adf_run_id}'\nAND status != 'SUCCESS'\n",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Prepare Logic apps body",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Prepare Email Subject",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Prepare Email Body Footer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Prepare Email Body Header",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Read all tables status",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "logic_apps_body",
+					"value": ""
 				}
 			}
 		],
@@ -90,6 +164,9 @@
 				"type": "String"
 			},
 			"body_subject": {
+				"type": "String"
+			},
+			"logic_apps_body": {
 				"type": "String"
 			}
 		},
